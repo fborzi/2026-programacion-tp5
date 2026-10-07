@@ -150,6 +150,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Checkout central compliance configs
+        uses: actions/checkout@v4
+        with:
+          repository: fborzi/2026-programacion-tests
+          ssh-key: ${{ secrets.TESTS_DEPLOY_KEY }}
+          path: private-tests-repo
+          sparse-checkout: |
+            shared
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -164,6 +173,10 @@ jobs:
         id: lint
         run: |
           set +e
+
+          cp private-tests-repo/shared/.pylintrc .
+          cp private-tests-repo/shared/.flake8 .
+          cp private-tests-repo/shared/pyproject.toml .
 
           ruff check src/ --output-format=pylint > ruff-report.txt
           RUFF_EXIT=$?
@@ -214,7 +227,7 @@ jobs:
 
           #### PYLINT ####
           echo "## Pylint" >> "$SUMMARY"
-          echo "### Ejecutá **pylint src/** para correr las comprobaciones localmente." >> "$SUMMARY"
+          echo "### Revisá los avisos detallados a continuación para corregir tu código." >> "$SUMMARY"
           echo "" >> "$SUMMARY"
 
           if [ ! -f pylint-report.txt ]; then
@@ -242,7 +255,7 @@ jobs:
           #### RUFF ####
           echo "" >> "$SUMMARY"
           echo "## Ruff" >> "$SUMMARY"
-          echo "### Ejecutá **ruff check src/** para correr las comprobaciones localmente." >> "$SUMMARY"
+          echo "### Revisá los avisos detallados a continuación para corregir tu código." >> "$SUMMARY"
           echo "" >> "$SUMMARY"
 
           if [ ! -f ruff-report.txt ]; then
@@ -267,7 +280,7 @@ jobs:
           #### FLAKE8 ####
           echo "" >> "$SUMMARY"
           echo "## Flake8" >> "$SUMMARY"
-          echo "### Ejecutá **flake8 src/** para correr las comprobaciones localmente." >> "$SUMMARY"
+          echo "### Revisá los avisos detallados a continuación para corregir tu código." >> "$SUMMARY"
           echo "" >> "$SUMMARY"
 
           if [ ! -f flake8-report.txt ]; then
