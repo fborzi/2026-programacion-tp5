@@ -98,7 +98,7 @@ A medida que resuelven los ejercicios asignados en su rama:
    ```
 4. Crear un commit con un mensaje claro y descriptivo del ejercicio resuelto:
    ```bash
-   git commit -m "Resuelve ejercicio 1501 y añade función auxiliar en funciones.py"
+   git commit -m "feat(): Resuelve ejercicio 1501 y añade función auxiliar en funciones.py"
    ```
 5. Subir los cambios a su rama individual en GitHub:
    ```bash
