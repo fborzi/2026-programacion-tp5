@@ -1,4 +1,3 @@
-#ejercicio 1501: comprobar si un elemento pertenece a una lista.
 def pertenece(lista: list, elemento) -> bool:
     """
     Comprueba si un elemento se encuentra en una lista.
@@ -24,7 +23,6 @@ def buscar_indice(lista: list, elemento) -> int:
         return lista.index(elemento)
     return -1
 
-# Ejercicio 1504: carga interactiva de nombres.
 def cargar_nombres(nombres: list = None) -> list:
     """
     Solicita nombres y los guarda hasta recibir una entrada en blanco.
@@ -42,8 +40,6 @@ def cargar_nombres(nombres: list = None) -> list:
     nombres.append(nombre)
     return cargar_nombres(nombres)
 
-
-# Ejercicio 1505: convertir los nombres de una lista a mayúsculas.
 def convertir_mayusculas(nombres: list) -> list:
     """
     Crea una nueva lista con los nombres en mayúsculas.
@@ -58,3 +54,39 @@ def convertir_mayusculas(nombres: list) -> list:
         nombre_mayuscula = nombre.upper()
         nombres_mayusculas.append(nombre_mayuscula)
     return nombres_mayusculas
+
+def dos_minimos(lista):
+    """Busca los dos valores menores de una lista.
+    Args:
+        lista (list): Elementos comparables entre sí.
+    Returns:
+        Los dos menores valores; usa None si faltan elementos.
+    """
+    ordenados = sorted(lista)
+    primero = ordenados[0] if len(ordenados) >= 1 else None
+    segundo = ordenados[1] if len(ordenados) >= 2 else None
+    return primero, segundo
+
+def digitos(numero):
+    """Separa un número entero en sus dígitos.
+    Args:
+        numero (int): Número que se desea separar.
+    Returns:
+        list[int]: Dígitos en el orden en que aparecen.
+    """
+    return [int(c) for c in str(abs(numero))]
+
+def ocurrencias(lista):
+    """Cuenta grupos consecutivos de elementos iguales.
+    Args:
+        lista (list): Elementos que se desean agrupar.
+    Returns:
+        list[list]: Pares [elemento, cantidad] en orden de aparición.
+    """
+    resultado = []
+    for elemento in lista:
+        if resultado and resultado[-1][0] == elemento:
+            resultado[-1][1] += 1
+        else:
+            resultado.append([elemento, 1])
+    return resultado
