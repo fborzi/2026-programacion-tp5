@@ -1,5 +1,4 @@
 """Ejercicio 1517: comparación y subconjuntos con conjuntos de hormonas.
-
 Informa si horm1 comparte alguna hormona con horm2 y con horm3, si
 horm2 es subconjunto de horm1, y muestra el conjunto de todas las
 hormonas iterando por él.

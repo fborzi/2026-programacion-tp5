@@ -1,5 +1,4 @@
-"""Ejercicio 1505: conversión de elementos de una lista a mayúsculas.
-
+"""Ejercicio 1505, conversión de elementos de una lista a mayúsculas
 Reutiliza la carga del ejercicio 1504 y produce una nueva lista con
 los nombres convertidos completamente a mayúsculas.
 """

@@ -1,5 +1,4 @@
 """Ejercicio 1521: Procesamiento de oraciones y vocales en un texto.
-
 lee líneas de texto hasta recibir una terminada en '*'. Informa las
 palabras con al menos  3 vocales diferentes, la cantidad de oraciones
 (cada una termina con '.' ) y el porcentaje de oraciones con más de cinco palabras
