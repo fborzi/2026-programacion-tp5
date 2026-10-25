@@ -90,3 +90,101 @@ def ocurrencias(lista):
         else:
             resultado.append([elemento, 1])
     return resultado
+
+def indice_mayor(lista):
+    """Devuelve el índice de la primera aparición del mayor elemento.
+    Args:
+        lista (list): Lista de números comparables.
+    Returns:
+        int | None: Índice del máximo, o None si la lista está vacía.
+    """
+    if not lista:
+        return None
+    mayor = max(lista)
+    return lista.index(mayor)
+import unicodedata
+
+
+def normalizar(texto):
+    """Normaliza texto para comparar sin distinguir mayúsculas ni tildes."""
+    texto = str(texto).strip().casefold()
+    return "".join(
+        caracter for caracter in unicodedata.normalize("NFD", texto)
+        if unicodedata.category(caracter) != "Mn"
+    )
+
+
+def obtenerCiudad(personas, DNI):
+    """Busca y devuelve la ciudad de una persona por su DNI."""
+    for persona in personas:
+        if str(persona[1]).strip() == str(DNI).strip():
+            return persona[2]
+    return None
+
+
+def obtenerProvincia(personas, ciudades, DNI):
+    """Busca y devuelve la provincia donde vive una persona."""
+    ciudad_persona = obtenerCiudad(personas, DNI)
+
+    if ciudad_persona is None:
+        return None
+
+    for ciudad, provincia in ciudades:
+        if normalizar(ciudad) == normalizar(ciudad_persona):
+            return provincia
+    return None
+
+
+def contarPoblacion(personas, ciudades, provincia):
+    """Cuenta cuántas personas viven en una provincia."""
+    cantidad = 0
+
+    for persona in personas:
+        provincia_persona = obtenerProvincia(personas, ciudades, persona[1])
+        if provincia_persona is not None and normalizar(provincia_persona) == normalizar(provincia):
+            cantidad += 1
+
+    return cantidad
+
+def digitos_repetidos(numero):
+    """Devuelve una lista de dígitos distintos que aparecen más de una vez.
+    Args:
+        numero (int): Número entero que se analiza.
+    Returns:
+        list[int]: Dígitos repetidos, sin duplicarlos en la lista resultado.
+    """
+    digitos_numero = digitos(numero)
+    return list(dict.fromkeys(
+        digito for digito in digitos_numero
+        if digitos_numero.count(digito) > 1
+    ))
+
+def cargar_lineas_hasta_asterisco():
+    """Lee líneas de texto hasta que una termine con *.
+    Returns:
+        str: Texto completo ingresado, sin el asterisco final.
+    """
+    lineas = []
+
+    def leer_otra_linea():
+        linea = input("Ingrese una línea (termine la última con *): ")
+        if linea.rstrip().endswith("*"):
+            lineas.append(linea.rstrip()[:-1])
+            return
+        lineas.append(linea)
+        leer_otra_linea()
+
+    leer_otra_linea()
+    return "\\n".join(lineas)
+
+def contar_vocales_distintas(palabra):
+    """Cuenta las vocales diferentes de una palabra, ignorando mayúsculas y acentos.
+    Args:
+        palabra (str): Palabra que se desea analizar.
+    Returns:
+        int: Cantidad de vocales distintas encontradas.
+    """
+    traduccion = str.maketrans("áéíóúÁÉÍÓÚ", "aeiouAEIOU")
+    texto = palabra.translate(traduccion).lower()
+    return len({caracter for caracter in texto if caracter in "aeiou"})
+
