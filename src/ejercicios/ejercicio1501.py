@@ -1,6 +1,6 @@
 """Pertenencia y busqueda de indices en listas"""
 
-b = [4,"palabra",[0,1],9.6,False]
+b = [ 4, "palabra", [0,1], 9.6, False ]
 """Intruccion para determinar si los siguientes elementos se encuentran en la lista"""
 
 print(9.6 in b)
