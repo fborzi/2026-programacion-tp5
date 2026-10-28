@@ -1,4 +1,4 @@
-def pertenece(lista: list, elemento) -> bool:
+def pertenece(lista: list, elemento):
     """
     Comprueba si un elemento se encuentra en una lista.
     Args:
@@ -10,7 +10,7 @@ def pertenece(lista: list, elemento) -> bool:
     
     return elemento in lista
 
-def buscar_indice(lista: list, elemento) -> int:
+def buscar_indice(lista: list, elemento):
     """
     Devuelve la posicion de un elemento dentro de una lista.
     Args: 
