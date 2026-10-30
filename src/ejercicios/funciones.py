@@ -248,6 +248,149 @@ def cargar_socios() -> dict:
         }
     return socios
 
+#ejercicio 1524 administracion de socios del Club CAVUL
+"""Este codigo permite administrar socios de un club, incluyendo carga, 
+búsqueda, actualización y eliminación de socios."""
+
+def cargar_socios():
+    """Carga socios del club hasta ingresar DNI 0.
+
+    Args:
+        Ninguno.
+
+    Returns:
+        dict: Socios indexados por DNI, con sus datos personales y cuota.
+    """
+    socios = {}
+
+    def cargar_otro():
+        dni = input("DNI (0 para terminar): ").strip()
+        if dni == "0":
+            return
+        nombre = input("Nombre: ").strip()
+        apellido = input("Apellido: ").strip()
+        edad = int(input("Edad: "))
+        cuota = input("¿Cuota al día? (s/n): ").strip().lower() == "s"
+        socios[dni] = {"nombre": nombre, "apellido": apellido,
+                       "edad": edad, "cuota_al_dia": cuota}
+        cargar_otro()
+
+    cargar_otro()
+    return socios
+
+#ejercicio 1526 conteo y agrupacion de ciudades por pais 
+"""Este codigo permite cargar ciudades y contar cuantas pertenecen a cada pais,
+ademas de conservar la lista de ciudades si se desea."""
+
+def cargar_ciudades_por_pais(guardar_lista=False):
+    """Carga ciudades y cuenta cuantas pertenecen a cada pais.
+
+    Args:
+        guardar_lista (bool): Si es True, conserva cada ciudad junto a su país.
+
+    Returns:
+        tuple: Total de ciudades, conteo por pais y lista (si se solicita).
+    """
+    ciudades = []
+    conteo = {}
+
+    def cargar_otra():
+        ciudad = input("Ciudad (zz para terminar): ").strip()
+        if ciudad.lower() == "zz":
+            return
+        pais = input("País: ").strip()
+        conteo[pais] = conteo.get(pais, 0) + 1
+        if guardar_lista:
+            ciudades.append([ciudad, pais])
+        cargar_otra()
+
+    cargar_otra()
+    return len(ciudades) if guardar_lista else sum(conteo.values()), conteo, ciudades
+
+def contar_vocales_distintas(palabra):
+    """Cuenta las vocales distintas de una palabra, sin distinguir acentos.
+
+    Args:
+        palabra (str): Palabra que se analiza.
+
+    Returns:
+        int: Cantidad de vocales diferentes encontradas.
+    """
+    traduccion = str.maketrans("áéíóúÁÉÍÓÚ", "aeiouAEIOU")
+    texto = palabra.translate(traduccion).lower()
+    return len({c for c in texto if c in "aeiou"})
+
+
+    def leer_otra():
+        linea = input("Ingrese una línea (termine con *): ")
+        if linea.rstrip().endswith("*"):
+            lineas.append(linea.rstrip()[:-1])
+            return
+        lineas.append(linea)
+        leer_otra()
+
+    leer_otra()
+    return "\n".join(lineas)
+
+#ejercico 1530 Compreson  y descompresion de texto con algoritmo RLE
+"""Este codigo permite comprimir y descomprimir 
+texto usando el metodo RLE (Run-Length Encoding)."""
+
+def comprimir_rle(texto):
+    """Comprime caracteres consecutivos con el método RLE.
+
+    Args:
+        texto (str): Cadena original.
+
+    Returns:
+        list[tuple[str, int]]: Tuplas con cada carácter y su cantidad consecutiva.
+    """
+    if not texto:
+        return []
+    resultado = []
+    actual, cantidad = texto[0], 1
+    for caracter in texto[1:]:
+        if caracter == actual:
+            cantidad += 1
+        else:
+            resultado.append((actual, cantidad))
+            actual, cantidad = caracter, 1
+    resultado.append((actual, cantidad))
+    return resultado
+
+def descomprimir_rle(lista_comprimida):
+    """Reconstruye un texto desde una lista comprimida con RLE.
+
+    Args:
+        lista_comprimida (list[tuple[str, int]]): Carácter y cantidad.
+
+    Returns:
+        str: Texto original reconstruido.
+    """
+    return "".join(caracter * cantidad for caracter, cantidad in lista_comprimida)
+
+def tasa_compresion(texto_original, lista_comprimida):
+    """Calcula la reducción de longitud obtenida mediante RLE.
+
+    Args:
+        texto_original (str): Texto antes de comprimir.
+        lista_comprimida (list[tuple[str, int]]): Resultado de la compresión.
+
+    Returns:
+        tuple[float, bool]: Porcentaje de reducción y si fue efectiva.
+    """
+    if not texto_original:
+        return 0.0, False
+    tasa = (1 - len(lista_comprimida) / len(texto_original)) * 100
+    return tasa, len(lista_comprimida) < len(texto_original)
+
+
+
+
+
+
+
+
 
 
 
