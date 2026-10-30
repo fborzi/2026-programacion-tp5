@@ -1,3 +1,15 @@
+def minimo_elemento(lista):
+  
+    if (not lista):
+        return None
+    else :
+        minimo=lista[0]
+        for e in lista:
+           if e < minimo :
+               minimo=e
+        return minimo
+      
+
 def pertenece(lista: list, elemento):
     """
     Comprueba si un elemento se encuentra en una lista.
