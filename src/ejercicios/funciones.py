@@ -20,3 +20,28 @@ def digitos(numero):
     for caracter in str(numero):
         resultado.append(int(caracter))
     return resultado
+
+
+
+def ocurrencias(lista):
+    """Conteo de ocurrencias contiguas
+    args:Recibe una lista
+    return:lista formada por cada elemento de la lista
+    junto con el numero de ocurrencias contiguas"""
+
+    if lista == []:
+        return []
+
+    en_seguimiento  = lista[0]
+    contador = 1
+    resultado = []
+
+    for i in lista[1:]:
+        if i == en_seguimiento:
+            contador=contador + 1
+        else:
+            resultado.append([en_seguimiento,contador])
+            en_seguimiento=i
+            contador=1
+    resultado.append([en_seguimiento,contador])
+    return resultado
