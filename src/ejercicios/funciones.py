@@ -188,3 +188,30 @@ def contar_vocales_distintas(palabra):
     texto = palabra.translate(traduccion).lower()
     return len({caracter for caracter in texto if caracter in "aeiou"})
 
+def frecuencia_caracteres(cadena):
+    """Cuenta la frecuencia de cada carácter de una cadena.
+    Args:
+        cadena (str): Texto que se analiza.
+    Returns:
+        dict[str, int]: Diccionario de carácter y cantidad de apariciones.
+    """
+    frecuencia = {}
+    for caracter in cadena:
+        frecuencia[caracter] = frecuencia.get(caracter, 0) + 1
+    return frecuencia
+
+def sucesion_mira_y_deci(n):
+    """Genera los primeros términos de la sucesión Mira y Decí.
+    Args:
+        n (int): Cantidad de términos solicitados.
+    Returns:
+        list[int]: Términos generados en orden.
+    """
+    if n <= 0:
+        return []
+    terminos = ["1"]
+    for _ in range(1, n):
+        anterior = terminos[-1]
+        grupos = ocurrencias(list(anterior))
+        terminos.append("".join(str(cantidad) + caracter for caracter, cantidad in grupos))
+    return [int(termino) for termino in terminos]
