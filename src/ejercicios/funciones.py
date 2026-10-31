@@ -39,3 +39,14 @@ def piedra_papel_tijera(jugador1,jugador2):
             return 2
         else :
             return 1
+        
+"""Funcion borrar_adyacentes recibe como parametro una lista de caracteres y retorna los mismos sin repeticiones"""
+
+def borrar_adyacentes(lista) :
+    nueva_lista=[]
+    
+    for caracter in lista :
+        if caracter not in nueva_lista :
+            nueva_lista.append(caracter)
+    return nueva_lista
+
