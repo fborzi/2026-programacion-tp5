@@ -17,14 +17,14 @@ def ingresar_nombres() -> list[str]:
     return nombres
 
 
-def minimo_elemento(lista: list[Any] | str) -> Any:
+def minimo_elemento(lista: list[Any] | str) -> object:
     """Busca el menor elemento de una secuencia de valores comparables.
 
     Args:
         lista (list | str): Elementos comparables entre sí.
 
     Returns:
-        Any: El menor valor encontrado, o None si la secuencia está vacía.
+        object: El menor valor encontrado, o None si la secuencia está vacía.
     """
     if len(lista) == 0:
         return None
