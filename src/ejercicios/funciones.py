@@ -17,6 +17,16 @@ def ingresar_nombres() -> list[str]:
     return nombres
 
 
+def imprimir_nombres(nombres: list[str]) -> None:
+    """Muestra cada nombre de la lista en una línea, iterando sobre ella.
+
+    Args:
+        nombres (list[str]): Nombres a mostrar.
+    """
+    for nombre in nombres:
+        print(nombre)
+
+
 def minimo_elemento(lista: list[Any] | str) -> object:
     """Busca el menor elemento de una secuencia de valores comparables.
 
