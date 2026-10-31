@@ -1,11 +1,11 @@
 """Ejercicio 1504: carga interactiva de nombres en una lista."""
 
-from src.ejercicios.funciones import cargar_nombres
+from src.ejercicios.funciones import ingresar_nombres
 
 
 def main() -> None:
     """Carga nombres hasta recibir uno en blanco y los muestra."""
-    nombres = cargar_nombres()
+    nombres = ingresar_nombres()
     print("Nombres ingresados:")
     for nombre in nombres:
         print(nombre)

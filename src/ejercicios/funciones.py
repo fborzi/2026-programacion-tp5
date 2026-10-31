@@ -3,7 +3,7 @@
 from typing import Any
 
 
-def cargar_nombres() -> list[str]:
+def ingresar_nombres() -> list[str]:
     """Pide nombres por teclado hasta que se ingrese uno en blanco.
 
     Returns:
