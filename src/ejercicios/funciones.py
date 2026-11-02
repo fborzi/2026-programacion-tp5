@@ -68,3 +68,17 @@ def sumatoria_digitos(lista):
         nueva_lista.append(resultado_suma)
             
     return nueva_lista 
+""" Funcion dos_sumandos, recibe por parametros una lista de numeros enteros y un numero como valor de referencia
+    Recorre cada indice de la lista y evalua las posibilidades de sumar 2 de ellos para encontrar el valor del numero de referencia ingresado"""
+
+def dos_sumandos(lista,resultado):
+    nueva_lista=[]
+    
+    for i in range(len(lista)):
+        num1 = lista[i]
+        for j in range(i + 1, len(lista)):
+            num2 = lista[j]
+            posible = num1 +num2 
+            if (posible == resultado):
+                nueva_lista=[i,j]    
+    return nueva_lista
