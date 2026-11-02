@@ -50,3 +50,21 @@ def borrar_adyacentes(lista) :
             nueva_lista.append(caracter)
     return nueva_lista
 
+"""Funcion suma_digitos, recibe un numero como parametro, y recorre cada uno de sus digitos sumandolos"""
+def suma_digitos(n):
+    total = 0
+
+    for digito in str(n):
+        total = total + int(digito) 
+    return total
+
+"""Funcion sumatoria digitos, recibe una lista de numeros y llamando a la funcion suma_digitos, crea una nueva
+    con los resultados de la sumatoria de cada numero"""
+def sumatoria_digitos(lista):
+    nueva_lista = []
+    
+    for e in lista:
+        resultado_suma = suma_digitos(e)
+        nueva_lista.append(resultado_suma)
+            
+    return nueva_lista 
