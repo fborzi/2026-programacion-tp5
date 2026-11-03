@@ -1,4 +1,4 @@
-
+""" Operaciones basicas con conjuntos numericos """
 numeros = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
 """Agregamos 11 y 12 al conjunto"""

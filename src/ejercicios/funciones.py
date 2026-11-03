@@ -82,3 +82,23 @@ def dos_sumandos(lista,resultado):
             if (posible == resultado):
                 nueva_lista=[i,j]    
     return nueva_lista
+
+""" Funcion digitos_repetidos recibe como parametro un numero entero, lo pasa a string para poder recorrerlo digito por digito
+    Luego ese digito lo pasa a entero nuevamente y lo agrega a una lista, antes de agregarlo evalua si esta repetido o no, y en caso 
+    de ser un numero repetido, lo agrega a una nueva lista para retornar cuales son los numeros que se repiten"""
+    
+def digitos_repetidos(n):
+    texto_numero = str(n)
+    
+    vistos = []   
+    repetidos = [] 
+    
+    for digito in texto_numero:
+        digito_int = int(digito)
+        
+        if digito_int in vistos:
+            if digito_int not in repetidos:
+                repetidos.append(digito_int)
+        else:
+            vistos.append(digito_int)
+    return repetidos
