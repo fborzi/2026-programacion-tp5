@@ -62,3 +62,37 @@ def sumatoria_digitos(lista):
         resultado.append(suma_digitos(numero))
 
     return resultado
+
+
+
+def dos_sumandos(lista, resultado):
+    for i in range(len(lista)):
+        for j in range(i + 1, len(lista)):
+            if lista[i] + lista[j] == resultado:
+                return [i, j]
+
+    return []
+
+
+
+def digitos_repetidos(n):
+    texto = str(abs(n))
+    repetidos = []
+
+    for digito in texto:
+        if texto.count(digito) > 1 and int(digito) not in repetidos:
+            repetidos.append(int(digito))
+
+    return repetidos
+
+
+
+def letras_repetidas(palabra):
+    palabra = palabra.lower()
+    repetidas = []
+
+    for letra in palabra:
+        if letra.isalpha() and palabra.count(letra) > 1 and letra not in repetidas:
+            repetidas.append(letra)
+
+    return repetidas
