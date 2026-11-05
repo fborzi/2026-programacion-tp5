@@ -93,3 +93,159 @@ def contarPoblacion(personas,ciudades,provincia):
                 contador += 1
                 break
     return contador
+
+def contarPacientes(pacientes):
+    """Cuenta la cantidad de pacientes en la lista
+    args:Recibe una lista de pacientes
+    return:retorna la cantidad de pacientes"""
+    return len(pacientes)
+
+
+def frecuencia_caracteres(cadena):
+    """Retorna  la frecuencia de cada caracter en la cadena
+    args:Recibe una cadena de texto
+    return:retorna cantidad de veces que aparece cada caracter en la cadena"""
+    
+    frecuencias = {}
+    for caracter in cadena:
+        frecuencias[caracter] = frecuencias.get(caracter, 0) + 1
+    return frecuencias
+
+
+
+def leer_productos():
+    """Lee los productos hasta que se ingresa el código -1.
+    args:No recibe parametros
+    return:retorna un diccionario con los productos ingresados"""
+    productos = {}
+    codigo = int(input("Código de producto (-1 para terminar): "))
+    while codigo != -1:
+        tipo = input("Tipo (lácteo, almacén, verdulería, limpieza, carnicería, otros): ")
+        descripcion = input("Descripción: ")
+        stock = int(input("Stock actual: "))
+        stock_minimo = int(input("Stock mínimo: "))
+        precio = float(input("Precio unitario: "))
+        productos[codigo] = {
+            "tipo": tipo,
+            "descripcion": descripcion,
+            "stock": stock,
+            "stock_minimo": stock_minimo,
+            "precio": precio,
+        }
+        codigo = int(input("Código de producto (-1 para terminar): "))
+    return productos
+
+
+
+def se_puede_vender(productos, codigo):
+    """Verifica si se puede vender un producto.
+    args:Recibe un diccionario de productos y un código de producto
+    return:retorna True si se puede vender, False en caso contrario"""
+    return codigo in productos and productos[codigo]["stock"] > 0
+
+
+def productos_bajo_minimo(productos):
+    """Devuelve una lista de productos cuyo stock es menor al stock mínimo.
+    args:Recibe un diccionario de productos
+    return:retorna una lista de tuplas con el código y la descripción de los productos"""
+    resultado = []
+    for codigo, datos in productos.items():
+        if datos["stock"] < datos["stock_minimo"]:
+            resultado.append((codigo, datos["descripcion"]))
+    return resultado
+
+
+def cantidad_lacteos(productos):
+    """Cuenta la cantidad de productos de tipo lácteo.
+    args:Recibe un diccionario de productos
+    return:retorna la cantidad de productos de tipo lácteo"""
+    cantidad = 0
+    for datos in productos.values():
+        if datos["tipo"] == "lácteo":
+            cantidad += 1
+    return cantidad
+
+
+def almacen_menor_stock(productos):
+    """Encuentra el producto de tipo almacén con menor stock.
+    args:Recibe un diccionario de productos
+    return:retorna una tupla con el código y la descripción del producto"""
+    menor_codigo = None
+    for codigo, datos in productos.items():
+        if datos["tipo"] == "almacén":
+            if menor_codigo is None or datos["stock"] < productos[menor_codigo]["stock"]:
+                menor_codigo = codigo
+    if menor_codigo is None:
+        return None
+    return menor_codigo, productos[menor_codigo]["descripcion"]
+
+
+def descripcion_producto(productos, codigo):
+    """Obtiene la descripción de un producto dado su código.
+    args:Recibe un diccionario de productos y un código de producto
+    return:retorna la descripción del producto o None si no se encuentra"""
+    if codigo in productos:
+        return productos[codigo]["descripcion"]
+    return None
+
+
+def tipo_menor_stock(productos):
+    """Encuentra el tipo de producto con menor stock total.
+    args:Recibe un diccionario de productos
+    return:retorna el tipo de producto con menor stock total"""
+    stock_por_tipo = {}
+    for datos in productos.values():
+        tipo = datos["tipo"]
+        stock_por_tipo[tipo] = stock_por_tipo.get(tipo, 0) + datos["stock"]
+    if not stock_por_tipo:
+        return None
+    menor_tipo = None
+    for tipo, total in stock_por_tipo.items():
+        if menor_tipo is None or total < stock_por_tipo[menor_tipo]:
+            menor_tipo = tipo
+    return menor_tipo
+
+
+def procesar_pedido(productos, pedido):
+    """Retorna (monto_total, lista_de_codigos_vendidos)
+    args:Recibe un diccionario de productos y una lista de códigos de productos
+    return:retorna el monto total del pedido y la lista de códigos vendidos"""
+    total = 0
+    vendidos = []
+    for codigo in pedido:
+        if se_puede_vender(productos, codigo):
+            productos[codigo]["stock"] -= 1
+            total += productos[codigo]["precio"]
+            vendidos.append(codigo)
+    return total, vendidos
+
+
+
+def siguiente_mira_y_deci(numero):
+    """Retorna el siguiente número en la secuencia "mira y deci"
+    args:Recibe un número entero
+    return:retorna el siguiente número en la secuencia"""
+    texto = str(numero)
+    resultado = ""
+    contador = 1
+    for i in range(1, len(texto)):
+        if texto[i] == texto[i - 1]:
+            contador += 1
+        else:
+            resultado += str(contador) + texto[i - 1]
+            contador = 1
+    resultado += str(contador) + texto[-1]
+    return int(resultado)
+
+
+def sucesion_mira_y_deci(n):
+    """Genera la sucesión "mira y deci" hasta el n-ésimo término
+    args:Recibe un número entero n
+    return:retorna una lista con los primeros n términos de la sucesión"""
+    sucesion = []
+    actual = 1
+    for _ in range(n):
+        sucesion.append(actual)
+        actual = siguiente_mira_y_deci(actual)
+    return sucesion
+ 
