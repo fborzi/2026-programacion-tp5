@@ -108,3 +108,45 @@ def digitos_repetidos(n):
         else:
             vistos.append(digito_int)
     return repetidos
+
+def comprimir_rle(texto):
+    # 
+    if not texto:
+        return []
+    
+    lista_comprimida = []
+    caracter_actual = texto[0]
+    contador = 1
+    
+    for i in range(1, len(texto)):
+        if texto[i] == caracter_actual:
+            contador += 1
+        else:
+            lista_comprimida.append((caracter_actual, contador))
+            caracter_actual = texto[i]
+            contador = 1
+    lista_comprimida.append((caracter_actual, contador))
+    
+    return lista_comprimida
+
+
+def descomprimir_rle(lista_comprimida):
+    texto_original = ""
+
+    for caracter, cantidad in lista_comprimida:
+        texto_original += caracter * cantidad
+        
+    return texto_original
+
+def tasa_compresion(texto_original, lista_comprimida):
+    longitud_original = len(texto_original)
+    longitud_comprimida = len(lista_comprimida)
+    
+    if longitud_original == 0:
+        return 0.0, False
+    
+    tasa = (1 - longitud_comprimida / longitud_original) * 100
+    
+    efectiva = longitud_comprimida < longitud_original
+    
+    return tasa, efectiva
