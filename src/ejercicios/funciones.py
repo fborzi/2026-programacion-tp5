@@ -2,6 +2,10 @@
 
 from typing import Any
 
+from src.ejercicios.ejercicio1505 import convertir_a_mayusculas
+
+__all__ = ['convertir_a_mayusculas']
+
 
 def ingresar_nombres() -> list[str]:
     """Pide nombres por teclado hasta que se ingrese uno en blanco.
