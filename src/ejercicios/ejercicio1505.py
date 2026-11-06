@@ -2,7 +2,11 @@
 
 
 def convertir_a_mayusculas(nombres: list[str]) -> list[str]:
-    """Devuelve una nueva lista con todos los nombres en mayúsculas."""
+    """Devuelve una nueva lista con todos los nombres en mayúsculas.
+
+    Args:
+        nombres: Lista de nombres que se convertirán a mayúsculas.
+    """
     nombres_mayusculas: list[str] = []
 
     for nombre in nombres:

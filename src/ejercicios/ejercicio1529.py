@@ -2,7 +2,11 @@
 
 
 def siguiente_termino(numero: int) -> int:
-    """Genera el término siguiente contando dígitos consecutivos."""
+    """Genera el término siguiente contando dígitos consecutivos.
+
+    Args:
+        numero: Número entero que se analizará.
+    """
     cadena = str(numero)
     resultado = ""
     indice = 0
@@ -21,7 +25,11 @@ def siguiente_termino(numero: int) -> int:
 
 
 def sucesion_mira_y_deci(n: int) -> list[int]:
-    """Devuelve los primeros n términos de la sucesión Mira y Decí."""
+    """Devuelve los primeros n términos de la sucesión Mira y Decí.
+
+    Args:
+        n: Cantidad de términos que se generarán.
+    """
     sucesion: list[int] = []
 
     if n <= 0:

@@ -2,7 +2,11 @@
 
 
 def frecuencia_caracteres(cadena: str) -> dict[str, int]:
-    """Cuenta cuántas veces aparece cada carácter de una cadena."""
+    """Cuenta cuántas veces aparece cada carácter de una cadena.
+
+    Args:
+        cadena: Cadena de caracteres que se analizará.
+    """
     frecuencias: dict[str, int] = {}
 
     for caracter in cadena:

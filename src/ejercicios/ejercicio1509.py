@@ -5,7 +5,11 @@
 
 
 def digitos(numero: int) -> list[int]:
-    """Devuelve una lista con los dígitos de un número entero."""
+    """Devuelve una lista con los dígitos de un número entero.
+
+    Args:
+        numero: Número entero que se analizará.
+    """
     numero_texto: str = str(abs(numero))
     lista_digitos: list[int] = []
     for caracter in numero_texto:

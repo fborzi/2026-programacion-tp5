@@ -5,7 +5,11 @@ Prueba la función con diferentes listas numéricas."""
 
 
 def indice_mayor(lista: list[int | float]) -> int | None:
-    """Devuelve el índice de la primera aparición del valor máximo."""
+    """Devuelve el índice de la primera aparición del valor máximo.
+
+    Args:
+        lista: Lista de elementos que se procesarán.
+    """
     if not lista:
         return None
     mayor: int | float = max(lista)

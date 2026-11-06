@@ -17,7 +17,12 @@ def crear_pacientes() -> Registro:
 
 
 def incrementar_edad(pacientes: Registro, dni: int) -> bool:
-    """Incrementa la edad de un paciente si existe."""
+    """Incrementa la edad de un paciente si existe.
+
+    Args:
+        pacientes: Registro de pacientes y sus datos.
+        dni: Documento de identidad del paciente.
+    """
     if dni not in pacientes:
         return False
 
@@ -26,7 +31,11 @@ def incrementar_edad(pacientes: Registro, dni: int) -> bool:
 
 
 def pacientes_diabeticos(pacientes: Registro) -> list[int]:
-    """Devuelve los DNI de los pacientes diabéticos."""
+    """Devuelve los DNI de los pacientes diabéticos.
+
+    Args:
+        pacientes: Registro de pacientes y sus datos.
+    """
     return [
         dni for dni, datos in pacientes.items()
         if datos["diabetico"]
@@ -34,7 +43,11 @@ def pacientes_diabeticos(pacientes: Registro) -> list[int]:
 
 
 def promedio_diabeticos(pacientes: Registro) -> float:
-    """Calcula el promedio de edad de pacientes diabéticos."""
+    """Calcula el promedio de edad de pacientes diabéticos.
+
+    Args:
+        pacientes: Registro de pacientes y sus datos.
+    """
     edades = [
         int(datos["edad"])
         for datos in pacientes.values()
@@ -44,7 +57,11 @@ def promedio_diabeticos(pacientes: Registro) -> float:
 
 
 def existe_mayor_sin_diabetes(pacientes: Registro) -> bool:
-    """Indica si existe un mayor de 80 años sin diabetes."""
+    """Indica si existe un mayor de 80 años sin diabetes.
+
+    Args:
+        pacientes: Registro de pacientes y sus datos.
+    """
     return any(
         int(datos["edad"]) > 80 and not datos["diabetico"]
         for datos in pacientes.values()

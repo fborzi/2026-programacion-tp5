@@ -2,7 +2,11 @@
 
 
 def analizar_digitos(numero: int) -> tuple[int, int]:
-    """Calcula suma y cantidad de apariciones de dígitos repetidos."""
+    """Calcula suma y cantidad de apariciones de dígitos repetidos.
+
+    Args:
+        numero: Número entero que se analizará.
+    """
     digitos = str(abs(numero))
     suma = 0
     cantidad = 0

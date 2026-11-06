@@ -33,7 +33,12 @@ def cargar_productos() -> Inventario:
 
 
 def puede_vender(inventario: Inventario, codigo: int) -> bool:
-    """Determina si hay al menos una unidad disponible."""
+    """Determina si hay al menos una unidad disponible.
+
+    Args:
+        inventario: Diccionario con los productos registrados.
+        codigo: Código identificador del producto.
+    """
     return (
         codigo in inventario
         and int(inventario[codigo]["stock"]) > 0
@@ -41,7 +46,11 @@ def puede_vender(inventario: Inventario, codigo: int) -> bool:
 
 
 def bajo_minimo(inventario: Inventario) -> list[tuple[int, str]]:
-    """Obtiene productos con stock inferior al mínimo."""
+    """Obtiene productos con stock inferior al mínimo.
+
+    Args:
+        inventario: Diccionario con los productos registrados.
+    """
     resultado: list[tuple[int, str]] = []
 
     for codigo, producto in inventario.items():
@@ -52,7 +61,11 @@ def bajo_minimo(inventario: Inventario) -> list[tuple[int, str]]:
 
 
 def contar_lacteos(inventario: Inventario) -> int:
-    """Cuenta los productos clasificados como lácteos."""
+    """Cuenta los productos clasificados como lácteos.
+
+    Args:
+        inventario: Diccionario con los productos registrados.
+    """
     return sum(
         1 for producto in inventario.values()
         if producto["tipo"] in ("lácteo", "lacteo")
@@ -60,7 +73,11 @@ def contar_lacteos(inventario: Inventario) -> int:
 
 
 def almacen_menor_stock(inventario: Inventario) -> int | None:
-    """Devuelve el código del producto de almacén con menor stock."""
+    """Devuelve el código del producto de almacén con menor stock.
+
+    Args:
+        inventario: Diccionario con los productos registrados.
+    """
     codigos = [
         codigo for codigo, producto in inventario.items()
         if str(producto["tipo"]) in ("almacen", "almacén")
@@ -76,14 +93,23 @@ def almacen_menor_stock(inventario: Inventario) -> int | None:
 
 
 def descripcion_producto(inventario: Inventario, codigo: int) -> str | None:
-    """Busca la descripción de un producto por código."""
+    """Busca la descripción de un producto por código.
+
+    Args:
+        inventario: Diccionario con los productos registrados.
+        codigo: Código identificador del producto.
+    """
     if codigo in inventario:
         return str(inventario[codigo]["descripcion"])
     return None
 
 
 def tipo_menor_stock(inventario: Inventario) -> str | None:
-    """Obtiene el tipo con menor cantidad total de unidades."""
+    """Obtiene el tipo con menor cantidad total de unidades.
+
+    Args:
+        inventario: Diccionario con los productos registrados.
+    """
     totales: dict[str, int] = {}
 
     for producto in inventario.values():
@@ -99,7 +125,12 @@ def tipo_menor_stock(inventario: Inventario) -> str | None:
 def procesar_pedido(
     inventario: Inventario, pedido: list[int]
 ) -> tuple[float, list[int]]:
-    """Procesa las ventas disponibles y actualiza el stock."""
+    """Procesa las ventas disponibles y actualiza el stock.
+
+    Args:
+        inventario: Diccionario con los productos registrados.
+        pedido: Lista de códigos de productos solicitados.
+    """
     monto = 0.0
     vendidos: list[int] = []
 

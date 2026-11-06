@@ -4,7 +4,11 @@
 def dos_minimos(
     lista: list[int | float]
 ) -> tuple[int | float | None, int | float | None]:
-    """Devuelve los dos elementos menores de una lista numérica."""
+    """Devuelve los dos elementos menores de una lista numérica.
+
+    Args:
+        lista: Lista de elementos que se procesarán.
+    """
     if not lista:
         return None, None
 

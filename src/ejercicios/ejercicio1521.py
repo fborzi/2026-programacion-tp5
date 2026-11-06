@@ -4,7 +4,11 @@ import unicodedata
 
 
 def normalizar(texto: str) -> str:
-    """Elimina acentos y convierte el texto a minúsculas."""
+    """Elimina acentos y convierte el texto a minúsculas.
+
+    Args:
+        texto: Texto que se analizará.
+    """
     texto = texto.lower()
     caracteres = unicodedata.normalize("NFD", texto)
     return "".join(
@@ -14,7 +18,11 @@ def normalizar(texto: str) -> str:
 
 
 def palabras_con_vocales(texto: str) -> list[str]:
-    """Obtiene palabras con al menos tres vocales diferentes."""
+    """Obtiene palabras con al menos tres vocales diferentes.
+
+    Args:
+        texto: Texto que se analizará.
+    """
     palabras = texto.replace(".", " ").split()
     resultado: list[str] = []
 
@@ -27,7 +35,11 @@ def palabras_con_vocales(texto: str) -> list[str]:
 
 
 def analizar_oraciones(texto: str) -> tuple[int, float]:
-    """Cuenta oraciones y calcula el porcentaje de las largas."""
+    """Cuenta oraciones y calcula el porcentaje de las largas.
+
+    Args:
+        texto: Texto que se analizará.
+    """
     oraciones = texto.split(".")
     cantidad = 0
     largas = 0

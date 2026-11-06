@@ -5,7 +5,11 @@
 
 
 def ocurrencias(lista: list[object]) -> list[list[object]]:
-    """Agrupa elementos consecutivos iguales y cuenta sus apariciones."""
+    """Agrupa elementos consecutivos iguales y cuenta sus apariciones.
+
+    Args:
+        lista: Lista de elementos que se procesarán.
+    """
     resultado: list[list[object]] = []
     for elemento in lista:
         if resultado and resultado[-1][0] == elemento:
