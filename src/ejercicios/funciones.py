@@ -3,8 +3,74 @@
 from typing import Any
 
 from src.ejercicios.ejercicio1505 import convertir_a_mayusculas
+from src.ejercicios.ejercicio1507 import dos_minimos
+from src.ejercicios.ejercicio1509 import digitos
+from src.ejercicios.ejercicio1511 import ocurrencias
+from src.ejercicios.ejercicio1513 import indice_mayor
+from src.ejercicios.ejercicio1515 import (
+    contarPoblacion,
+    obtenerCiudad,
+    obtenerProvincia,
+)
+from src.ejercicios.ejercicio1519 import analizar_digitos
+from src.ejercicios.ejercicio1521 import (
+    analizar_oraciones,
+    normalizar,
+    palabras_con_vocales,
+)
+from src.ejercicios.ejercicio1523 import (
+    crear_pacientes,
+    existe_mayor_sin_diabetes,
+    incrementar_edad,
+    pacientes_diabeticos,
+    promedio_diabeticos,
+)
+from src.ejercicios.ejercicio1525 import frecuencia_caracteres
+from src.ejercicios.ejercicio1527 import (
+    almacen_menor_stock,
+    bajo_minimo,
+    cargar_productos,
+    contar_lacteos,
+    descripcion_producto,
+    procesar_pedido,
+    puede_vender,
+    tipo_menor_stock,
+)
+from src.ejercicios.ejercicio1529 import (
+    siguiente_termino,
+    sucesion_mira_y_deci,
+)
 
-__all__ = ['convertir_a_mayusculas']
+__all__ = [
+    "almacen_menor_stock",
+    "analizar_digitos",
+    "analizar_oraciones",
+    "bajo_minimo",
+    "cargar_productos",
+    "contarPoblacion",
+    "contar_lacteos",
+    "convertir_a_mayusculas",
+    "crear_pacientes",
+    "descripcion_producto",
+    "digitos",
+    "dos_minimos",
+    "existe_mayor_sin_diabetes",
+    "frecuencia_caracteres",
+    "incrementar_edad",
+    "indice_mayor",
+    "normalizar",
+    "obtenerCiudad",
+    "obtenerProvincia",
+    "ocurrencias",
+    "pacientes_diabeticos",
+    "palabras_con_vocales",
+    "procesar_pedido",
+    "promedio_diabeticos",
+    "puede_vender",
+    "siguiente_termino",
+    "sucesion_mira_y_deci",
+    "tipo_menor_stock",
+]
 
 
 def ingresar_nombres() -> list[str]:
