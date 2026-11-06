@@ -2,6 +2,7 @@
 
 from typing import Any
 
+
 from src.ejercicios.ejercicio1505 import convertir_a_mayusculas
 from src.ejercicios.ejercicio1507 import dos_minimos
 from src.ejercicios.ejercicio1509 import digitos
