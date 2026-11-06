@@ -1,3 +1,172 @@
+def dos_minimos(lista):
+    """Determina los dos valores mínimos de una lista.
+    Args:
+      lista: list - lista de números.
+    Returns:
+        tuple - los dos valores mínimos de la lista."""
+
+    if len(lista) == 0:
+        return (None, None)
+
+    if len(lista) == 1:
+        return (lista[0], None)
+
+    menor = lista[0]
+    segundo_menor = lista[1]
+
+    if segundo_menor < menor:
+        menor, segundo_menor = segundo_menor, menor
+
+    for elemento in lista[2:]:
+
+        if elemento < menor:
+            segundo_menor = menor
+            menor = elemento
+
+        elif elemento < segundo_menor:
+            segundo_menor = elemento
+
+    return (menor, segundo_menor)
+
+
+def digitos(numero):
+    """Separa los dígitos de un número y los guarda en una lista.
+    Args:
+       numero: int - número entero recibido por parámetro.
+    Returns:
+        list - lista con los dígitos del número."""
+    lista = []
+    numero = str(numero)
+
+    for digito in numero:
+        lista.append(int(digito))
+    return lista
+
+
+
+def ocurrencias(lista):
+    """Cuenta las apariciones consecutivas de cada elemento de una lista.
+    Args:
+        lista: list - lista de elementos.
+    Returns:
+        list - lista con cada elemento y su cantidad de apariciones consecutivas."""
+    
+    resultado = []
+    contador = 1
+
+    for i in range(len(lista)):
+        if i < len(lista) - 1 and lista[i] == lista[i + 1]:
+            contador += 1
+        else:
+            resultado.append([lista[i], contador])
+            contador = 1
+    return resultado
+
+
+
+def indice_mayor(lista):
+    """Busca la posición del mayor elemento de una lista.
+    Args:
+        lista: list - lista de números.
+    Returns:
+        int - índice donde se encuentra el mayor elemento."""
+
+    mayor = lista[0]
+    indice = 0
+
+    for i in range(len(lista)):
+        if lista[i] > mayor:
+            mayor = lista[i]
+            indice = i
+    return indice
+
+
+
+
+
+def obtenerCiudad(personas, DNI):
+    """Obtiene la ciudad de una persona.
+    Args:
+        lista: list - lista con los datos de una persona.
+    Returns:
+        str - ciudad de la persona. """
+    
+    for persona in personas:
+
+        if persona[1] == DNI:
+            return persona[2]
+        
+    return None
+
+def obtenerProvincia(personas, ciudades, DNI):
+    """Obtiene la provincia de una persona.
+    Args:
+        lista: list - lista con los datos de una persona.
+    Returns:
+        str - provincia de la persona."""
+    
+    ciudad = obtenerCiudad(personas, DNI)
+    for dato in ciudades:
+
+        if dato[0] == ciudad:
+            return dato[1]
+        
+    return None
+
+def contarPoblacion(personas, ciudades, provincia):
+    """Cuenta la población de una lista de personas.
+    Args:
+        lista: list - lista de personas.
+    Returns:
+        int - cantidad de personas."""
+
+    contador = 0
+
+    for persona in personas:
+        dni = persona[1]
+        provincia_persona = obtenerProvincia(personas, ciudades, dni)
+
+        if provincia_persona == provincia:
+            contador += 1
+    return contador
+
+
+def frecuencia_caracteres(cadena):
+    """Cuenta cuántas veces aparece cada carácter de una cadena.
+    Args:
+        cadena: str - cadena de texto recibida por parámetro.
+    Returns:
+        dict - diccionario con cada carácter y su frecuencia. """
+    
+    frecuencias = {}
+    for caracter in cadena:
+        if caracter in frecuencias:
+            frecuencias[caracter] += 1
+        else:
+            frecuencias[caracter] = 1
+    return frecuencias
+
+def sucesion_mira_y_deci(n):
+    """Calcula los primeros n números de la sucesión Mira y Decí.
+    Args:
+        n: int - cantidad de números que se desea obtener.
+    Returns:
+        list - lista con los primeros n números de la sucesión."""
+    
+    sucesion = [1]
+    while len(sucesion) < n:
+        numero = str(sucesion[-1])
+        siguiente = ""
+        contador = 1
+
+        for i in range(len(numero)):
+            if i < len(numero) - 1 and numero[i] == numero[i + 1]:
+                contador += 1
+            else:
+                siguiente = siguiente + str(contador) + numero[i]
+                contador = 1
+        sucesion.append(int(siguiente))
+    return sucesion
 def minimo_elemento(lista):
     """busca y devuelve el minimo elemento mas pequeño de la lista, 
     recibe una lista, si la lista esta vacia devuelve none"""
